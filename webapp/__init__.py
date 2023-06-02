@@ -17,9 +17,9 @@ logging.basicConfig(
 )
 
 
-def create_app():
+def create_app(config="webapp.config.ProductionConfig"):
     app = Flask(__name__)
-    app.config.from_pyfile("config.py")
+    app.config.from_object(config)
     db.init_app(app)
     migrate = Migrate(app, db)
 
